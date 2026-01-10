@@ -1,27 +1,27 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const User = sequelize.define("User", {
+const Product = sequelize.define("Product", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     unique: true,
     primaryKey: true,
   },
-  name: {
+  product_name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  email: {
-    type: DataTypes.STRING,
+  price: {
+    type: DataTypes.FLOAT,
     allowNull: false,
     unique: true,
   },
-  password: {
+  description: {
     type: DataTypes.STRING,
     allowNull: false,
   },
 });
-module.exports = User;
+module.exports = Product;
 
 //create user table with the schemas

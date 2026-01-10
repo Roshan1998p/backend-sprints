@@ -1,5 +1,6 @@
 const sequelize = require("../config/database");
 const User = require("../models/user.model");
+const Product = require("./product.model");
 
 sequelize
   .sync({ alter: true })
@@ -10,6 +11,7 @@ sequelize
     console.log(er);
   });
 
-module.export = {
+module.exports = {
   User,
+  Product,
 };

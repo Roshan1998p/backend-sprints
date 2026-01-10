@@ -1,13 +1,16 @@
-const { User } = require("../models");
+const prisma = require("../prisma/prisma"); // adjust path if needed
 
 exports.createUser = async (req, res) => {
-  console.log("crerateuser");
-
   try {
-    const user = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
+    const { name, email, password } = req.body;
+    console.log(req.body, "req.body");
+
+    const user = await prisma.user.create({
+      data: {
+        name,
+        email,
+        password, // ⚠️ hash later
+      },
     });
 
     res.status(201).json({
